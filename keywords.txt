@@ -1,0 +1,7 @@
+LED		KEYWORD1
+
+setPin		KEYWORD2
+on		KEYWORD2
+off		KEYWORD2
+toggle		KEYWORD2
+flash		KEYWORD2
