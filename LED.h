@@ -3,6 +3,8 @@
  * 
  * This file is part of the LED - Library
  * This library is used for better and easier control of LEDs
+ * 
+ * For more information take a look at: https://github.com/Linner-Thomas/Arduino_LED
  */
 
 ///////////////////////////////////////////////////
@@ -31,8 +33,7 @@ class LED
     boolean state;
 
   public:
-    LED();
-    LED(uint8_t pin);
+    LED(uint8_t pin = 0);
     
     void setPin(uint8_t pin);
 

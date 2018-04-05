@@ -3,6 +3,8 @@
  * 
  * This file is part of the LED - Library
  * This library is used for better and easier control of LEDs
+ * 
+ * For more information take a look at: https://github.com/Linner-Thomas/Arduino_LED
  */
 
 // Include Header - File
@@ -12,26 +14,16 @@
 ///////             CONSTRUCTOR             ///////
 ///////////////////////////////////////////////////
 
- /*
-  * Default - Constructor
-  *  - set Pin to 0
-  *  - configure IO
-  */
-LED::LED()
-{
-  LED::setPin(0); 
-}
-
 /*
  * Constructor
- *  - set Pin to given pin
+ *  - set Pin to given pin (default: 0)
  *  - configure IO
  *  
  *  @param pin: Pin to set the LED to 
  */
-LED::LED(uint8_t pin)
+LED::LED(uint8_t pin = 0)
 {
-  LED::setPin(pin);
+  this->setPin(pin);
 }
 
 ///////////////////////////////////////////////////
@@ -47,9 +39,9 @@ LED::LED(uint8_t pin)
  */
 void LED::setPin(uint8_t pin)
 {
-  LED::pin = pin;
+  this->pin = pin;
 
-  pinMode(pin, OUTPUT);
+  pinMode(this->pin, OUTPUT);
 }
 
 ///////////////////////////////////////////////////
@@ -61,9 +53,9 @@ void LED::setPin(uint8_t pin)
  */
 void LED::on()
 {
-  LED::state = LED_STATE_ON;
+  this->state = LED_STATE_ON;
 
-  digitalWrite(LED::pin, LED::state);
+  digitalWrite(this->pin, this->state);
 }
 
 /*
@@ -71,9 +63,9 @@ void LED::on()
  */
 void LED::off()
 {
-  LED::state = LED_STATE_OFF;
+  this->state = LED_STATE_OFF;
 
-  digitalWrite(LED::pin, LED::state);
+  digitalWrite(this->pin, this->state);
 }
 
 /*
@@ -83,9 +75,9 @@ void LED::off()
  */
 void LED::toggle()
 {
-  LED::state = !LED::state;
+  this->state = !this->state;
 
-  digitalWrite(LED::pin, LED::state);
+  digitalWrite(this->pin, this->state);
 }
 
 ///////////////////////////////////////////////////
@@ -99,11 +91,11 @@ void LED::toggle()
  */
 void LED::flash(uint16_t duration)
 {
-   LED::toggle();
+   this->toggle();
 
    delay(duration);
 
-   LED::toggle();
+   this->toggle();
 }
 
 /*
@@ -116,7 +108,7 @@ void LED::flash(uint16_t duration, uint8_t pulses)
 {
   for (int pulse = 0; pulse < pulses; pulse ++)
   {
-    LED::flash(duration);
+    this->flash(duration);
 
     delay(duration);
   }
